@@ -41,3 +41,12 @@ class Solution:
 sol = Solution(list(range(1,10000000,2)),9000)
 
 print (sol.hashsolve())
+
+
+'''
+Complexity Analysis:
+
+Time complexity : O(n)O(n). We traverse the list containing nn elements only once. Each look up in the table costs only O(1) time.
+
+Space complexity : O(n). The extra space required depends on the number of items stored in the hash table, which stores at most n elements.
+'''
