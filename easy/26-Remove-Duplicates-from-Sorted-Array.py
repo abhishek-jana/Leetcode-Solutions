@@ -34,3 +34,86 @@ for (int i = 0; i < len; i++) {
     print(nums[i]);
 }
 '''
+
+class Solution:
+    def removeDuplicates(self,nums):
+        nums = set(nums)
+        return len(nums)
+    def removeDuplicates2(self,arr):
+        n = len(arr)
+        if n == 0 or n == 1: 
+            return n 
+    
+        # To store index of next 
+        # unique element 
+        j = 0
+    
+        # Doing same as done 
+        # in Method 1 Just 
+        # maintaining another  
+        # updated index i.e. j 
+        for i in range(0, n-1): 
+            if arr[i] != arr[i+1]: 
+                arr[j] = arr[i] 
+                j += 1
+    
+        arr[j] = arr[n-1] 
+        j += 1
+        return j
+    def removeDuplicates3(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if not nums:
+        	return 0
+        	
+        index_i = 0
+
+        for index_j in range(1, len(nums)):
+        	if nums[index_i] != nums[index_j]:
+        		index_i += 1
+        		nums[index_i] = nums[index_j]
+
+        return index_i + 1
+    
+print (Solution().removeDuplicates3([0,0,1,1,1,2,2,3,3,4]))
+
+# Time O(n)
+# Space O(1)
+
+# To return the array
+# This function returns new  
+# size of modified array 
+def removeDuplicates(arr, n): 
+    if n == 0 or n == 1: 
+        return n 
+  
+    # To store index of next 
+    # unique element 
+    j = 0
+  
+    # Doing same as done 
+    # in Method 1 Just 
+    # maintaining another  
+    # updated index i.e. j 
+    for i in range(0, n-1): 
+        if arr[i] != arr[i+1]: 
+            arr[j] = arr[i] 
+            j += 1
+  
+    arr[j] = arr[n-1] 
+    j += 1
+    return j 
+  
+# Driver code 
+arr = [1, 2, 2, 3, 4, 4, 4, 5, 5] 
+n = len(arr) 
+  
+# removeDuplicates() returns 
+# new size of array. 
+n = removeDuplicates(arr, n) 
+  
+# Print updated array 
+for i in range(0, n): 
+    print (" %d "%(arr[i]))
