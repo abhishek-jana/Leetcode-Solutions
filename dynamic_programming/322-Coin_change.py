@@ -21,12 +21,33 @@ class Solution:
 
         for coin in coins:
             for x in range(coin, amount + 1):
+                #print (dp[x],dp[x-coin]+1,x,coin)
                 dp[x] = min(dp[x], dp[x - coin] + 1)
         return dp[amount] if dp[amount] != float('inf') else -1
-
+        #return dp
 '''
 Time complexity : O(S*n). On each step the algorithm finds the next F(i) in n iterations, where 1 ≤ i ≤ S. Therefore in total the iterations are S*n.
 Space complexity : O(S). We use extra space for the memoization table.
 '''
 
-print (Solution().coinChange([1,2,3],4))
+print (Solution().coinChange([6,7,21,25],63))
+
+class Solution2():
+    def coinChange2(self, coins, amount):
+        dp = [0] * (amount + 1)
+        dp[0] = 1
+
+        for coin in coins:
+            for x in range(coin, amount + 1):
+                #print (dp[x],dp[x-coin]+1,x,coin)
+                dp[x] += dp[x - coin]
+        return dp[amount] #if dp[amount] != float('inf') else -1
+        #return dp
+
+# Driver program to test above function 
+arr = [1, 2, 3] 
+m = len(arr) 
+n = 4
+
+print (Solution2().coinChange2(arr,n)) 
+
