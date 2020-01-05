@@ -57,7 +57,7 @@ class Solution:
                 arr[j] = arr[i] 
                 j += 1
     
-        arr[j] = arr[n-1] 
+        #arr[j] = arr[n-1] 
         j += 1
         return j
     def removeDuplicates3(self, nums):
@@ -77,11 +77,12 @@ class Solution:
 
         return index_i + 1
     
-print (Solution().removeDuplicates3([0,0,1,1,1,2,2,3,3,4]))
+print (Solution().removeDuplicates2([0,0,1,1,1,2,2,3,3,4]))
 
 # Time O(n)
 # Space O(1)
 
+'''
 # To return the array
 # This function returns new  
 # size of modified array 
@@ -115,5 +116,6 @@ n = len(arr)
 n = removeDuplicates(arr, n) 
   
 # Print updated array 
-for i in range(0, n): 
+for i in range(0, n):
     print (" %d "%(arr[i]))
+'''

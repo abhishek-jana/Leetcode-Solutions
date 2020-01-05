@@ -15,3 +15,21 @@ What should we return when needle is an empty string? This is a great question t
 
 For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf().
 '''
+
+class Solution:
+    def strStr(self, haystack, needle):
+        return haystack.find(needle)
+    def strStr2(self, haystack, needle):
+        """
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        """
+        i = 0
+        while i <= len(haystack) - len(needle):
+            if haystack[i:i+len(needle)] == needle:
+                return i
+            i += 1
+        return -1
+    
+print (Solution().strStr("helloll","ll"))
