@@ -19,6 +19,8 @@ For the purpose of this problem, we will return 0 when needle is an empty string
 class Solution:
     def strStr(self, haystack, needle):
         return haystack.find(needle)
+    # Time:  O(n * k)
+    # Space: O(k)
     def strStr2(self, haystack, needle):
         """
         :type haystack: str
@@ -33,3 +35,44 @@ class Solution:
         return -1
     
 print (Solution().strStr("helloll","ll"))
+# Time:  O(n + k)
+# Space: O(k)
+
+class Solution2(object):
+    def strStr(self, haystack, needle):
+        """
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        """
+        if not needle:
+            return 0
+
+        return self.KMP(haystack, needle)
+
+    def KMP(self, text, pattern):
+        prefix = self.getPrefix(pattern)
+        j = -1
+        for i in range(len(text)):
+            while j > -1 and pattern[j + 1] != text[i]:
+                j = prefix[j]
+            if pattern[j + 1] == text[i]:
+                j += 1
+            if j == len(pattern) - 1:
+                return i - j
+        return -1
+
+    def getPrefix(self, pattern):
+        prefix = [-1] * len(pattern)
+        j = -1
+        for i in range(1, len(pattern)):
+            while j > -1 and pattern[j + 1] != pattern[i]:
+                j = prefix[j]
+            if pattern[j + 1] == pattern[i]:
+                j += 1
+            prefix[i] = j
+        return prefix
+    
+print (Solution2().getPrefix("lllll"))
+print (Solution2().strStr("hello","el"))
+# https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/

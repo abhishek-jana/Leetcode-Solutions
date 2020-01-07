@@ -16,3 +16,20 @@ Output: 2
 Explanation: The square root of 8 is 2.82842..., and since 
              the decimal part is truncated, 2 is returned.
 '''
+
+class Solution(object):
+    def mySqrt(self, x):
+        if x<=0:return 0
+        if x==1:return 1
+        low = 0
+        high = x
+        while( low < high ):
+            mid = ( low + high ) // 2
+            if( mid ** 2 <= x and (mid+1)**2 > x ):
+                return mid
+            if( mid ** 2 < x ):
+                low = mid
+            if( mid ** 2 > x ):
+                high = mid
+        
+print (Solution().mySqrt(300))
