@@ -1,3 +1,4 @@
+
 '''
 Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
 
@@ -16,11 +17,13 @@ What should we return when needle is an empty string? This is a great question t
 For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf().
 '''
 
+
 class Solution:
     def strStr(self, haystack, needle):
         return haystack.find(needle)
     # Time:  O(n * k)
     # Space: O(k)
+
     def strStr2(self, haystack, needle):
         """
         :type haystack: str
@@ -29,14 +32,16 @@ class Solution:
         """
         i = 0
         while i <= len(haystack) - len(needle):
-            if haystack[i:i+len(needle)] == needle:
+            if haystack[i:i + len(needle)] == needle:
                 return i
             i += 1
         return -1
-    
-print (Solution().strStr("helloll","ll"))
+
+
+print(Solution().strStr("helloll", "ll"))
 # Time:  O(n + k)
 # Space: O(k)
+
 
 class Solution2(object):
     def strStr(self, haystack, needle):
@@ -72,7 +77,8 @@ class Solution2(object):
                 j += 1
             prefix[i] = j
         return prefix
-    
-print (Solution2().getPrefix("lllll"))
-print (Solution2().strStr("hello","el"))
+
+
+print(Solution2().getPrefix("lllll"))
+print(Solution2().strStr("hello", "el"))
 # https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/
