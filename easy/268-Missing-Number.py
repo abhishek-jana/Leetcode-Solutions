@@ -12,3 +12,12 @@ Output: 8
 Note:
 Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
 '''
+class Solution:
+    def missingNumber(self, nums):
+        n = len(nums)
+        if (n*(n+1)/2 == sum(nums)):
+            return 0
+        else:
+            res = n*(n+1)/2 - sum(nums)
+        return int(res)
+print (Solution().missingNumber([9,6,4,2,3,5,7,0,1]))

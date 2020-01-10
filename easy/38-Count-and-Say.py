@@ -26,6 +26,7 @@ Output: "1211"
 Explanation: For n = 3 the term was "21" in which we have two groups "2" and "1", "2" can be read as "12" which means frequency = 1 and value = 2, the same way "1" is read as "11", so the answer is the concatenation of "12" and "11" which is "1211".
 '''
 
+
 class Solution:
     def countAndSay(self, n):
         s = "1"
@@ -45,11 +46,13 @@ class Solution:
             i += 1
         return ''.join(result)
 
+
 print(Solution().countAndSay(6))
 # Time:  O(n * 2^n)
 # Space: O(2^n)
 # Time:  O(n * 2^n)
 # Space: O(2^n)
+
 
 class Solution(object):
     # @return a string
