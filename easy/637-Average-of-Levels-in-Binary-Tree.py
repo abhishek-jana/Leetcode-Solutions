@@ -209,3 +209,32 @@ printLevelOrder(root)
 # Best Explanation
 
 #http://yueguo1217.com/leetcode-637-average-of-levels-in-binary-tree-easy-75-in-python/
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def averageOfLevels(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[float]
+        """
+        res=[]
+        if not root: return res
+        q=[root]
+        while q:
+            q1=[]
+            total=0
+            cnt=0
+            while q:
+                node =q.pop()
+                if node.left: q1.append(node.left)
+                if node.right: q1.append(node.right)
+                total+=node.val
+                cnt+=1
+            res.append(total*1.0/cnt)
+            q=list(q1)
+        return res
