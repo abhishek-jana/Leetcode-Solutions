@@ -11,22 +11,19 @@ Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefor
 """
 class Solution:
     def longestConsecutive(self, nums):
-        # for each num I will check whether num-1 exists
-        # if yes, then I ignore this num
-        # Otherwise if num-1 doesn't exist, then I will go till I can find num+1
-        # so in a way I am only checking each number max once and once in set.
-
-        st = set(nums)
-        mx = 0
-        for num in nums:
-            if num-1 not in st:
-                tmp = 1
-                while num+1 in st:
-                    tmp += 1
-                    num += 1
-                mx = max(mx, tmp)
-
-        return mx
+        nums = set(nums)
+        res = 0
+        while nums:
+            stack = [next(iter(nums))]
+            tmp = 0
+            while stack:
+                tmp += 1
+                curr = stack.pop()
+                nums.discard(curr)
+                if curr + 1 in nums: stack.append(curr + 1)
+                if curr - 1 in nums: stack.append(curr - 1)
+            res = max(res, tmp)
+        return res
 '''
 from collections import defaultdict
 d = defaultdict(list)
