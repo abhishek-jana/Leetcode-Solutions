@@ -29,3 +29,30 @@ The string may contain any possible characters out of 256 valid ascii characters
 Do not use class member/global/static variables to store states. Your encode and decode algorithms should be stateless.
 Do not rely on any library method such as eval or serialize methods. You should implement your own encode/decode algorithm.
 """
+# https://www.cnblogs.com/lightwindy/p/9758222.html
+# Time:  O(n)
+# Space: O(1)
+class Codec:
+    def encode(self, strs):
+        """Encodes a list of strings to a single string.
+        :type strs: List[str]
+        :rtype: str
+        """
+        encoded_str = ""
+        for s in strs:
+            encoded_str += "%0*x" % (8, len(s)) + s
+        return encoded_str
+
+
+    def decode(self, s):
+        """Decodes a single string to a list of strings.
+        :type s: str
+        :rtype: List[str]
+        """
+        i = 0
+        strs = []
+        while i < len(s):
+            l = int(s[i:i+8], 16)
+            strs.append(s[i+8:i+8+l])
+            i += 8+l
+        return strs

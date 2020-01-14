@@ -16,3 +16,23 @@ Return the following binary tree:
     /  \
    15   7
 """
+# https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/discuss/34543/Simple-O(n)-without-map
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def buildTree(self, preorder, inorder):
+        def build(stop):
+            if inorder and inorder[-1] != stop:
+                root = TreeNode(preorder.pop())
+                root.left = build(root.val)
+                inorder.pop()
+                root.right = build(stop)
+                return root
+        preorder.reverse()
+        inorder.reverse()
+        return build(None)

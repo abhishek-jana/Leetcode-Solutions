@@ -14,3 +14,14 @@ Note:
 You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
 Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
 """
+#O(n)
+#https://leetcode.com/problems/top-k-frequent-elements/solution/
+from collections import Counter
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        most_common = Counter(nums).most_common()
+        fin = []
+        for l in range(0,k):
+            fin.append(most_common[l][0])
+
+        return fin

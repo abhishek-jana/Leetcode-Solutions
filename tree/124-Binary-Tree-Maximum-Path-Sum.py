@@ -24,3 +24,44 @@ Input: [-10,9,20,null,null,15,7]
 
 Output: 42
 """
+# https://leetcode.com/problems/binary-tree-maximum-path-sum/discuss/39919/8-10-lines-two-solutions
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+class Solution(object):
+    def maxPathSum(self, root):
+        def maxsums(node):
+            if not node:
+                return [-2**31] * 2
+            left = maxsums(node.left)
+            right = maxsums(node.right)
+            return [node.val + max(left[0], right[0], 0),
+                    max(left + right + [node.val + left[0] + right[0]])]
+        return max(maxsums(root))
+
+# https://leetcode.com/problems/binary-tree-maximum-path-sum/discuss/370666/Concise-DFS-solution-with-detailed-explanation-Python
+class Solution:
+    def maxPathSum(self, root: TreeNode) -> int:
+        self.max_sum = float('-inf')
+        self.dfs(root)
+        return self.max_sum
+
+    def dfs(self, node):
+        if not node: return 0
+
+        # only add positive contributions
+        leftST_sum = max(0, self.dfs(node.left))
+        rightST_sum = max(0, self.dfs(node.right))
+
+        # check if cumulative sum at current node > global max sum so far
+        # this evaluates a candidate path
+        self.max_sum = max(self.max_sum, leftST_sum + rightST_sum + node.val)
+
+        # add to the current node ONLY one of the children contributions
+        # in order to maintain the constraint of considering only paths
+        # if not, we would be exploring explore the whole tree - against problem definition
+        return max(leftST_sum, rightST_sum) + node.val

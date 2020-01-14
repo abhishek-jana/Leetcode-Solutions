@@ -26,3 +26,25 @@ Follow up:
 If all integer numbers from the stream are between 0 and 100, how would you optimize it?
 If 99% of all integer numbers from the stream are between 0 and 100, how would you optimize it?
 """
+# https://leetcode.com/problems/find-median-from-data-stream/discuss/74047/JavaPython-two-heap-solution-O(log-n)-add-O(1)-find
+# O(log n) add, O(1)
+
+from heapq import *
+
+
+class MedianFinder:
+    def __init__(self):
+        self.small = []  # the smaller half of the list, max heap (invert min-heap)
+        self.large = []  # the larger half of the list, min heap
+
+    def addNum(self, num):
+        if len(self.small) == len(self.large):
+            heappush(self.large, -heappushpop(self.small, -num))
+        else:
+            heappush(self.small, -heappushpop(self.large, num))
+
+    def findMedian(self):
+        if len(self.small) == len(self.large):
+            return float(self.large[0] - self.small[0]) / 2.0
+        else:
+            return float(self.large[0])
