@@ -52,6 +52,12 @@ class Solution(object):
         while head and pre:
             head.next, head, pre.next, pre = pre, head.next, head.next, pre.next
 
+'''
+1) Find the middle point using tortoise and hare method.
+2) Split the linked list into two halves using found middle point in step 1.
+3) Reverse the second half.
+4) Do alternate merge of first and second halves.
+'''
 class Solution:
     def reorderList(self, head: ListNode) -> None:
         """
@@ -68,14 +74,12 @@ class Solution:
             # Split the list and reverse the right half
             lhead, rhead = head, self.reverse(slow.next)
             slow.next = None
-
             # Connect two haves
             lcur, rcur = lhead, rhead
             while lcur and rcur:
                 tmp, rcur = rcur, rcur.next
                 tmp.next = lcur.next
                 lcur.next, lcur = tmp, lcur.next
-
     def reverse(self, head: ListNode) -> ListNode:
         if not head:
             return None
