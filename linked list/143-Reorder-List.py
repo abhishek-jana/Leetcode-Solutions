@@ -51,3 +51,36 @@ class Solution(object):
             slow.next, pre, slow = pre, slow, slow.next
         while head and pre:
             head.next, head, pre.next, pre = pre, head.next, head.next, pre.next
+
+class Solution:
+    def reorderList(self, head: ListNode) -> None:
+        """
+        Do not return anything, modify head in-place instead.
+        """
+        if not head:
+            return
+        else:
+            slow = fast = head
+            # Find middle node
+            while fast and fast.next:
+                slow, fast = slow.next, fast.next.next
+
+            # Split the list and reverse the right half
+            lhead, rhead = head, self.reverse(slow.next)
+            slow.next = None
+
+            # Connect two haves
+            lcur, rcur = lhead, rhead
+            while lcur and rcur:
+                tmp, rcur = rcur, rcur.next
+                tmp.next = lcur.next
+                lcur.next, lcur = tmp, lcur.next
+
+    def reverse(self, head: ListNode) -> ListNode:
+        if not head:
+            return None
+        else:
+            prev, cur = None, head
+            while cur:
+                cur.next, cur, prev = prev, cur.next, cur
+            return prev
