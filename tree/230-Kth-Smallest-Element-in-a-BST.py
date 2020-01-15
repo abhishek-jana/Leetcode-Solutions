@@ -29,13 +29,7 @@ What if the BST is modified (insert/delete operations) often and you need to fin
 """
 # https://leetcode.com/problems/kth-smallest-element-in-a-bst/solution/
 class Solution:
-    def kthSmallest(self, root, k):
-        """
-        :type root: TreeNode
-        :type k: int
-        :rtype: int
-        """
+    def kthSmallest(self, root, k):     
         def inorder(r):
             return inorder(r.left) + [r.val] + inorder(r.right) if r else []
-
         return inorder(root)[k - 1]
