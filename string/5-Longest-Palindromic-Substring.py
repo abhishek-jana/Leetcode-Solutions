@@ -14,8 +14,7 @@ Output: "bb"
 """
 # https://leetcode.com/problems/longest-palindromic-substring/discuss/448046/Beats-100-Python-Solution-Explained-all-the-3-approaches-properly
 # https://www.youtube.com/watch?time_continue=161&v=nbTSfrEfo6M&feature=emb_logo
-class Solution:
-    def longestPalindrome(self,s):
+
         """
         Link: https://leetcode.com/problems/longest-palindromic-substring/ (LC 5)
         Difficulty: Medium
@@ -62,6 +61,8 @@ class Solution:
         """
         # Convert the string to odd length by adding # after every character, and also $, % to mark the beginning and ending
         # of the string. Ex: aba -> $#a#b#a#%
+class Solution:
+    def longestPalindrome(self,s):
         modified_string = ''
         for ch in s:
             modified_string += '#' + ch
