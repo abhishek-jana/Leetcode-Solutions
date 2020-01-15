@@ -23,14 +23,8 @@ return its depth = 3.
 #         self.left = None
 #         self.right = None
 # BFS
-
-
 class Solution(object):
     def maxDepth(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
         depth = 0
         level = [root] if root else []
         while level:
@@ -42,29 +36,21 @@ class Solution(object):
                 if el.right:
                     queue.append(el.right)
             level = queue
-
         return depth
 
 # DFS
-
-
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
-
         depth = 0
         stack = [(root, 1)]
-
         while stack:
             root, leng = stack.pop()
             if not root:
                 return 0
-
             if leng > depth:
                 depth = leng
-
             if root.right:
                 stack.append((root.right, leng + 1))
             if root.left:
                 stack.append((root.left, leng + 1))
-
         return depth
