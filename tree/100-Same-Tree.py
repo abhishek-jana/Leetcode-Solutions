@@ -36,11 +36,6 @@ Output: false
 
 class Solution:
     def isSameTree(self, p, q):
-        """
-        :type p: TreeNode
-        :type q: TreeNode
-        :rtype: bool
-        """
         # p and q are both None
         if not p and not q:
             return True
@@ -55,13 +50,12 @@ class Solution:
 
 def isSameTree1(self, p, q):
     if p and q:
-        return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+        return p.val == q.val and self.isSameTree(p.left, q.left)\
+          and self.isSameTree(p.right, q.right)
     else:
         return p == q
 
 # DFS with stack
-
-
 def isSameTree2(self, p, q):
     stack = [(p, q)]
     while stack:
@@ -78,8 +72,6 @@ def isSameTree2(self, p, q):
     return True
 
 # BFS with queue
-
-
 def isSameTree3(self, p, q):
     queue = [(p, q)]
     while queue:
