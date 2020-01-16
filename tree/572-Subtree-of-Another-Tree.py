@@ -45,14 +45,17 @@ class Solution:
             return False
         if self.equals(s,t):
             return True
-        return self.isSubtree(s.left,t) or self.isSubtree(s.right,t)
+        return self.isSubtree(s.left,t) \
+     or self.isSubtree(s.right,t)
 
     def equals(self,x,y):
         if x is None and y is None:
             return True
         if x is None or y is None:
             return False
-        return x.val==y.val and self.equals(x.left,y.left) and self.equals(x.right,y.right)
+        return x.val==y.val and \
+     self.equals(x.left,y.left) and \
+     self.equals(x.right,y.right)
 
 #Time complexity : O(m*n). In worst case(skewed tree) traverse function takes O(m*n) time.
 
