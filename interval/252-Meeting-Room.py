@@ -13,10 +13,6 @@ class Interval(object):
             self.end = e
 class Solution(object):
     def canAttendMeetings(self, intervals):
-        """
-        :type intervals: List[Interval]
-        :rtype: bool
-        """
         length = len(intervals)
         intervals.sort(key = lambda x : x.start)
         for i in range(length-1):
