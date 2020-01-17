@@ -42,8 +42,8 @@ class Solution(object):
         for ele in S:
             low = ele.lower()
             up = ele.upper() #this two variables are used to avoid repetitive use of .lower() and .upper()
-            out = [x + low for x in out] + [x + up for x in out] if ele.isalpha() else [x + ele for x in out]
-            print (out)
+            out = [x + low for x in out] + [x + up for x in out]\
+            if ele.isalpha() else [x + ele for x in out]
         return out
 
 print (Solution().letterCasePermutation('aa34E'))
