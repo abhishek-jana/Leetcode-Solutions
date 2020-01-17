@@ -13,7 +13,8 @@ Example 2:
 Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
 """
 """
-For linked list 1->2->3->4-5, the code first makes the list to be 1->2->3->4<-5 and 4->None, then make 3->None, for even number linked list: 1->2->3->4, make first 1->2->3<-4 and 3->None, and lastly do not forget to make 2->None.
+For linked list 1->2->3->4-5, the code first makes the list to be 1->2->3->4<-5 and 4->None, then make 3->None,
+for even number linked list: 1->2->3->4, make first 1->2->3<-4 and 3->None, and lastly do not forget to make 2->None.
 """
 def reorderList(self, head):
     if not head:
