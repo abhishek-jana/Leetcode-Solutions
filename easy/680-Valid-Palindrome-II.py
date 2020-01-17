@@ -28,7 +28,8 @@ class Solution(object):
         if budget == 0:
             return False
         budget -= 1
-        return self.validPalindromeHelper(s, left + 1, right, budget) or self.validPalindromeHelper(s, left, right - 1, budget)
+        return self.validPalindromeHelper(s, left + 1, right, budget) or \
+    self.validPalindromeHelper(s, left, right - 1, budget)
 
 print (Solution().validPalindrome('acacba'))
 
