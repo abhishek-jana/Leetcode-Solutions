@@ -35,6 +35,7 @@ class Linkedlist:
         current = self.head;
         while current is not None:
             nextNode = current.next;
+            current.next = prev
             prev = current;
             current = nextNode;
         return prev;
